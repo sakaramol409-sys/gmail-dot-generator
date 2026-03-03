@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gmail Dot Generator</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  color: white;
+  padding: 20px;
+}
+.container {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: auto;
+}
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+}
+button {
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+textarea {
+  width: 95%;
+  height: 200px;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Gmail Dot Generator</h2>
+
+<input type="text" id="email" placeholder="example@gmail.com">
+<br>
+<button onclick="generate()">Generate</button>
+
+<h3 id="count"></h3>
+<textarea id="output"></textarea>
+</div>
+
+<script>
+function generate() {
+  const email = document.getElementById("email").value.trim();
+
+  if (!email.endsWith("@gmail.com")) {
+    alert("Enter valid Gmail address");
+    return;
+  }
+
+  let username = email.replace("@gmail.com", "").replace(/\./g, "");
+  let positions = username.length - 1;
+  let total = Math.pow(2, positions);
+
+  if (positions > 15) {
+    alert("Username too long!");
+    return;
+  }
+
+  let results = [];
+
+  for (let i = 0; i < total; i++) {
+    let binary = i.toString(2).padStart(positions, "0");
+    let newEmail = "";
+
+    for (let j = 0; j < positions; j++) {
+      newEmail += username[j];
+      if (binary[j] === "1") newEmail += ".";
+    }
+
+    newEmail += username[username.length - 1];
+    results.push(newEmail + "@gmail.com");
+  }
+
+  document.getElementById("count").innerText =
+    "Total variations: " + results.length;
+
+  document.getElementById("output").value =
+    results.join("\n");
+}
+</script>
+
+</body>
+</html>
