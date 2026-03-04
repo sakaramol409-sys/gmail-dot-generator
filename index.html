@@ -9,20 +9,97 @@
 <meta name="author" content="Gmail Dot Generator">
 
 <style>
-body { font-family: Arial; text-align:center; background: linear-gradient(135deg,#667eea,#764ba2); color:white; padding:20px; margin:0; }
+body { 
+  font-family: Arial; 
+  text-align:center; 
+  background: linear-gradient(135deg,#667eea,#764ba2); 
+  color:white; 
+  padding:20px; 
+  margin:0; 
+}
+
 .logo { font-size:42px; font-weight:bold; margin-top:20px; }
 .logo span { color:#00e0ff; }
 .subtitle { font-size:14px; margin-bottom:30px; color:#e0e0e0; }
-.container { background:white; color:black; padding:25px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 15px 40px rgba(0,0,0,0.25); }
-input { width:90%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:15px; }
-button { padding:12px 25px; background:#667eea; color:white; border:none; cursor:pointer; border-radius:8px; font-weight:bold; font-size:15px; transition:0.3s; }
+
+.container { 
+  background:white; 
+  color:black; 
+  padding:25px; 
+  border-radius:15px; 
+  max-width:728px; 
+  width:100%;
+  margin:auto; 
+  box-shadow:0 15px 40px rgba(0,0,0,0.25); 
+}
+
+input { 
+  width:90%; 
+  padding:12px; 
+  margin:10px 0; 
+  border-radius:8px; 
+  border:1px solid #ccc; 
+  font-size:15px; 
+}
+
+button { 
+  padding:12px 25px; 
+  background:#667eea; 
+  color:white; 
+  border:none; 
+  cursor:pointer; 
+  border-radius:8px; 
+  font-weight:bold; 
+  font-size:15px; 
+  transition:0.3s; 
+}
+
 button:hover { background:#5563d6; }
-textarea { width:95%; height:200px; margin-top:15px; border-radius:8px; padding:10px; }
+
+textarea { 
+  width:95%; 
+  height:200px; 
+  margin-top:15px; 
+  border-radius:8px; 
+  padding:10px; 
+}
+
 .footer { margin-top:40px; font-size:14px; }
 .footer a { color:white; text-decoration:none; margin:0 10px; cursor:pointer; }
-.section { display:none; text-align:left; max-width:800px; margin:auto; background:white; color:black; padding:20px; border-radius:10px; margin-top:20px; }
+
+.section { 
+  display:none; 
+  text-align:left; 
+  max-width:800px; 
+  margin:auto; 
+  background:white; 
+  color:black; 
+  padding:20px; 
+  border-radius:10px; 
+  margin-top:20px; 
+}
+
 .section h1, .section h2 { color:black; }
-.ad-banner { margin:20px 0; }
+
+/* ✅ تنسيق الإعلان */
+.ad-banner {
+  width:100%;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+  margin:25px 0;
+}
+
+.ad-banner iframe {
+  max-width:100%;
+  height:90px;
+  border:none;
+}
+
+/* 📱 تحسين الموبايل */
+@media (max-width:768px){
+  .container { max-width:100%; }
+}
 </style>
 </head>
 
@@ -33,16 +110,16 @@ textarea { width:95%; height:200px; margin-top:15px; border-radius:8px; padding:
 
 <!-- 🔥 إعلان Adsterra -->
 <div class="ad-banner">
-  <script>
-    atOptions = {
-      'key' : '21f6c0fd60fb19fc70bd3a5e527d337e',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
-    };
-  </script>
-  <script src="https://www.highperformanceformat.com/21f6c0fd60fb19fc70bd3a5e527d337e/invoke.js"></script>
+<script>
+   atOptions = {
+     'key' : '21f6c0fd60fb19fc70bd3a5e527d337e',
+     'format' : 'iframe',
+     'height' : 90,
+     'width' : 728,
+     'params' : {}
+   };
+</script>
+<script src="https://www.highperformanceformat.com/21f6c0fd60fb19fc70bd3a5e527d337e/invoke.js"></script>
 </div>
 
 <!-- الصفحة الرئيسية -->
@@ -55,32 +132,19 @@ textarea { width:95%; height:200px; margin-top:15px; border-radius:8px; padding:
 <textarea id="output" placeholder="Your generated variations will appear here..."></textarea>
 </div>
 
-<!-- Privacy Policy و Terms (مخفية بالافتراضي) -->
+<!-- Privacy Policy -->
 <div class="section" id="privacySection">
 <h1>Privacy Policy</h1>
-<p>At Gmail Dot Generator, we respect your privacy.</p>
-<h2>Information We Collect</h2>
-<p>We do not collect, store, or share any personal information entered into this website. All email variations are generated directly in your browser.</p>
-<h2>Cookies</h2>
-<p>We may use cookies provided by third-party advertising partners to improve user experience and display relevant ads.</p>
-<h2>Third-Party Advertising</h2>
-<p>Advertisements displayed on this website may be served by third-party advertising networks. These networks may use cookies or tracking technologies.</p>
-<h2>Contact</h2>
-<p>If you have any questions regarding this Privacy Policy, please contact us through this website.</p>
+<p>We do not collect or store personal information. All processing happens inside your browser.</p>
+<p>Third-party advertising networks may use cookies for relevant ads.</p>
 <p>Last updated: 2026</p>
 </div>
 
+<!-- Terms -->
 <div class="section" id="termsSection">
 <h1>Terms of Use</h1>
-<p>By using Gmail Dot Generator, you agree to the following terms:</p>
-<h2>Use of Service</h2>
-<p>This tool is provided for educational and informational purposes only. Users are responsible for how they use the generated email variations.</p>
-<h2>No Warranty</h2>
-<p>This website is provided "as is" without any guarantees or warranties of any kind.</p>
-<h2>Limitation of Liability</h2>
-<p>We are not responsible for any misuse of this tool or any consequences resulting from its use.</p>
-<h2>Changes</h2>
-<p>We may update these terms at any time without notice.</p>
+<p>This tool is for educational purposes only.</p>
+<p>We are not responsible for misuse.</p>
 <p>Last updated: 2026</p>
 </div>
 
@@ -92,15 +156,20 @@ textarea { width:95%; height:200px; margin-top:15px; border-radius:8px; padding:
 </div>
 
 <script>
-// مولد Gmail Dot
 function generate() {
   const email = document.getElementById("email").value.trim();
-  if (!email.endsWith("@gmail.com")) { alert("Please enter a valid Gmail address"); return; }
+  if (!email.endsWith("@gmail.com")) { 
+    alert("Please enter a valid Gmail address"); 
+    return; 
+  }
 
   let username = email.replace("@gmail.com","").replace(/\./g,"");
   let positions = username.length - 1;
   let total = Math.pow(2, positions);
-  if (positions > 15) { alert("Username too long!"); return; }
+  if (positions > 15) { 
+    alert("Username too long!"); 
+    return; 
+  }
 
   let results = [];
   for (let i=0;i<total;i++){
@@ -118,7 +187,6 @@ function generate() {
   document.getElementById("output").value=results.join("\n");
 }
 
-// إظهار الأقسام عند الضغط على روابط Footer
 function showSection(id) {
   const sections = ['mainPage','privacySection','termsSection'];
   sections.forEach(sec => {
