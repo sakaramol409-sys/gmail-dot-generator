@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ✅ Google Verification الجديد -->
+<!-- Google Verification -->
 <meta name="google-site-verification" content="L-YUGczjRpq0XsW6jEb5JuHox_jWsMJu4PlgGWUf-Uk" />
 
 <title>Gmail Dot Generator - Free Online Tool</title>
@@ -13,7 +13,6 @@
 <meta name="keywords" content="gmail dot generator, gmail variations, gmail dot trick, gmail tool">
 <meta name="author" content="Gmail Dot Generator">
 
-<!-- SEO إضافي -->
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://gmail-dot-generator-five.vercel.app/">
 
@@ -23,8 +22,12 @@ body {
   text-align:center; 
   background: linear-gradient(135deg,#667eea,#764ba2); 
   color:white; 
-  padding:20px; 
   margin:0; 
+  height:100vh;
+  display:flex;
+  justify-content:center; /* توسيط أفقي */
+  align-items:center;     /* توسيط عمودي */
+  flex-direction:column;
 }
 
 .logo { font-size:42px; font-weight:bold; margin-top:20px; }
@@ -36,9 +39,9 @@ body {
   color:black; 
   padding:25px; 
   border-radius:15px; 
-  max-width:728px; 
-  width:100%;
-  margin:auto; 
+  max-width:500px; 
+  width:90%;
+  box-sizing:border-box;
   box-shadow:0 15px 40px rgba(0,0,0,0.25); 
 }
 
@@ -49,6 +52,7 @@ input {
   border-radius:8px; 
   border:1px solid #ccc; 
   font-size:15px; 
+  box-sizing:border-box;
 }
 
 button { 
@@ -71,6 +75,8 @@ textarea {
   margin-top:15px; 
   border-radius:8px; 
   padding:10px; 
+  border:1px solid #ccc;
+  box-sizing:border-box;
 }
 
 .footer { margin-top:40px; font-size:14px; }
@@ -90,7 +96,7 @@ textarea {
 
 .section h1, .section h2 { color:black; }
 
-/* ✅ تنسيق الإعلان */
+/* إعلان Adsterra */
 .ad-banner {
   width:100%;
   display:flex;
@@ -106,7 +112,9 @@ textarea {
 }
 
 @media (max-width:768px){
-  .container { max-width:100%; }
+  .container { max-width:90%; }
+  input, textarea { width:95%; }
+  button { width:100%; }
 }
 </style>
 </head>
@@ -116,7 +124,7 @@ textarea {
 <div class="logo">Gmail <span>●Dot</span> Generator</div>
 <div class="subtitle">Generate all possible Gmail dot variations instantly and easily</div>
 
-<!-- 🔥 إعلان Adsterra -->
+<!-- إعلان Adsterra -->
 <div class="ad-banner">
 <script>
    atOptions = {
@@ -146,33 +154,15 @@ textarea {
 <p>Last updated: 2026</p>
 </div>
 
-
 <div class="section" id="termsSection">
 <h1>Terms of Use</h1>
-
-<p>
-This website provides an automated tool for generating formatting variations of a Gmail address.
-</p>
-
-<p>
-The tool is provided "as is" without any warranties.
-Users are responsible for how they use the generated results.
-</p>
-
-<p>
-This website does not access, modify, or interact with any email account.
-It only generates formatting combinations based on user input.
-</p>
-
-<p>
-No email addresses are stored, collected, or transmitted.
-</p>
-
-<p>
-Last updated: 2026
-</p>
-
+<p>This website provides an automated tool for generating formatting variations of a Gmail address.</p>
+<p>The tool is provided "as is" without any warranties. Users are responsible for how they use the generated results.</p>
+<p>This website does not access, modify, or interact with any email account. It only generates formatting combinations based on user input.</p>
+<p>No email addresses are stored, collected, or transmitted.</p>
+<p>Last updated: 2026</p>
 </div>
+
 <div class="footer">
   <a onclick="showSection('privacySection')">Privacy Policy</a> |
   <a onclick="showSection('termsSection')">Terms of Use</a> |
@@ -189,21 +179,21 @@ function generate() {
 
   let username = email.replace("@gmail.com","").replace(/\./g,"");
   let positions = username.length - 1;
-  let total = Math.pow(2, positions);
   if (positions > 15) { 
     alert("Username too long!"); 
     return; 
   }
 
+  let total = Math.pow(2, positions);
   let results = [];
+
   for (let i=0;i<total;i++){
     let binary=i.toString(2).padStart(positions,"0");
     let newEmail="";
-    for (let j=0;j<positions;j++){
-      newEmail+=username[j];
-      if(binary[j]==="1") newEmail+=".";
+    for (let j=0;j<username.length;j++){
+      newEmail += username[j];
+      if (j < username.length - 1 && binary[j] === "1") newEmail += ".";
     }
-    newEmail+=username[username.length-1];
     results.push(newEmail+"@gmail.com");
   }
 
@@ -221,4 +211,3 @@ function showSection(id) {
 
 </body>
 </html>
-
