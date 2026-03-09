@@ -23,7 +23,7 @@ body {
 
 .logo { font-size:42px; font-weight:bold; margin-top:20px; }  
 .logo span { color:#00e0ff; }  
-.subtitle { font-size:14px; margin-bottom:30px; color:#e0e0e0; }  
+.subtitle { font-size:14px; margin-bottom:20px; color:#e0e0e0; }  
 
 .container {   
   background:white;   
@@ -89,17 +89,41 @@ textarea {
   display:flex;  
   justify-content:center;  
   overflow:hidden;  
-  margin:25px 0;  
+  margin:15px 0;  
 }  
 
 .ad-banner iframe {  
   max-width:100%;  
-  height:90px;  
   border:none;  
 }  
 
-@media (max-width:768px){  
-  .container { max-width:100%; }  
+/* إعلان مؤقت بعد Generate */
+.temp-ad {
+  display:none;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.temp-ad iframe {
+  max-width:100%;
+  border:none;
+}
+
+.close-btn {
+  position:absolute;
+  top:0;
+  right:0;
+  background:#333;
+  color:white;
+  font-weight:bold;
+  padding:2px 6px;
+  cursor:pointer;
+  border-radius:50%;
+  z-index:10;
+}
+
+@media (max-width:768px){
+  .container { max-width:100%; }
 }
 </style>
 </head>
@@ -108,7 +132,7 @@ textarea {
 <div class="logo">Gmail <span>●Dot</span> Generator</div>
 <div class="subtitle">Generate all possible Gmail dot variations instantly and easily</div>
 
-<!-- إعلان Adsterra -->
+<!-- بانر أعلى الموقع -->
 <div class="ad-banner">
 <script>
    atOptions = {
@@ -128,6 +152,27 @@ textarea {
 <button onclick="generate()">Generate</button>
 <h3 id="count"></h3>
 <textarea id="output" placeholder="Your generated variations will appear here..."></textarea>
+
+<!-- Native Banner / إعلان بعد الضغط على Generate -->
+<div id="tempAd" class="temp-ad" style="position:relative;">
+  <span class="close-btn" onclick="closeTempAd()">×</span>
+  <script async="async" data-cfasync="false" src="https://pl28884379.effectivegatecpm.com/e523158d22e7e93b836ae1a3c48887bf/invoke.js"></script>
+  <div id="container-e523158d22e7e93b836ae1a3c48887bf"></div>
+</div>
+</div>
+
+<!-- بانر الفوتر أعلى Footer -->
+<div class="ad-banner">
+<script>
+   atOptions = {
+     'key' : '31791cf0407feff687de93bf423d2751',
+     'format' : 'iframe',
+     'height' : 50,
+     'width' : 320,
+     'params' : {}
+   };
+</script>
+<script src="https://www.highperformanceformat.com/31791cf0407feff687de93bf423d2751/invoke.js"></script>
 </div>
 
 <div class="section" id="privacySection">
@@ -155,40 +200,42 @@ textarea {
 <script>
 function generate() {
   const email = document.getElementById("email").value.trim();
-  if (!email.endsWith("@gmail.com")) {   
-    alert("Please enter a valid Gmail address");   
-    return;   
-  }
+  if (!email.endsWith("@gmail.com")) { alert("Please enter a valid Gmail address"); return; }
 
   let username = email.replace("@gmail.com","").replace(/\./g,"");
-  let positions = username.length - 1;
-  if (positions > 15) {   
-    alert("Username too long!");   
-    return;   
-  }
-
-  let total = Math.pow(2, positions);
+  if(username.length>15){ alert("Username too long!"); return; }
+  let total = Math.pow(2, username.length-1);
   let results = [];
 
-  // تصحيح النقاط: لا نقطة بعد آخر حرف
-  for (let i = 0; i < total; i++) {
-    let binary = i.toString(2).padStart(positions, "0");
-    let newEmail = "";
-    for (let j = 0; j < username.length; j++) {
-      newEmail += username[j];
-      if (j < username.length - 1 && binary[j] === "1") newEmail += ".";
+  for (let i=0;i<total;i++){
+    let binary=i.toString(2).padStart(username.length-1,"0");
+    let newEmail="";
+    for (let j=0;j<username.length;j++){
+      newEmail+=username[j];
+      if(j<username.length-1 && binary[j]==="1") newEmail+=".";
     }
-    results.push(newEmail + "@gmail.com");
+    results.push(newEmail+"@gmail.com");
   }
 
-  document.getElementById("count").innerText = "Total variations: " + results.length;
-  document.getElementById("output").value = results.join("\n");
+  document.getElementById("count").innerText="Total variations: "+results.length;
+  document.getElementById("output").value=results.join("\n");
+
+  // إظهار Native Banner مؤقت بعد Generate
+  const tempAd = document.getElementById("tempAd");
+  tempAd.style.display="flex";
+  const closeBtn = tempAd.querySelector(".close-btn");
+  closeBtn.style.display="none";
+
+  // إظهار زر الإغلاق بعد 3 ثواني
+  setTimeout(()=>{ closeBtn.style.display="block"; },3000);
 }
 
-function showSection(id) {
+function closeTempAd(){ document.getElementById("tempAd").style.display="none"; }
+
+function showSection(id){
   const sections = ['mainPage','privacySection','termsSection'];
-  sections.forEach(sec => {
-    document.getElementById(sec).style.display = (sec===id) ? 'block' : 'none';
+  sections.forEach(sec=>{
+    document.getElementById(sec).style.display=(sec===id)?'block':'none';
   });
 }
 </script>
