@@ -4,35 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Verification -->
-<meta name="google-site-verification" content="L-YUGczjRpq0XsW6jEb5JuHox_jWsMJu4PlgGWUf-Uk" />
-
 <title>Gmail Dot Generator - Free Online Tool</title>
 
 <meta name="description" content="Generate all possible Gmail dot variations instantly. Free online Gmail dot generator tool. Fast, simple and unlimited.">
 <meta name="keywords" content="gmail dot generator, gmail variations, gmail dot trick, gmail tool">
 <meta name="author" content="Gmail Dot Generator">
 
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://gmail-dot-generator-five.vercel.app/">
-
 <style>
 body { 
   font-family: Arial; 
-  text-align:center; 
-  background: linear-gradient(135deg,#667eea,#764ba2); 
-  color:white; 
   margin:0; 
+  padding:0;
   height:100vh;
   display:flex;
-  justify-content:center; /* توسيط أفقي */
-  align-items:center;     /* توسيط عمودي */
   flex-direction:column;
+  justify-content:center; /* توسيط عمودي */
+  align-items:center;     /* توسيط أفقي */
+  background: linear-gradient(135deg,#667eea,#764ba2); 
+  color:white;
 }
 
 .logo { font-size:42px; font-weight:bold; margin-top:20px; }
 .logo span { color:#00e0ff; }
-.subtitle { font-size:14px; margin-bottom:30px; color:#e0e0e0; }
+.subtitle { font-size:14px; margin-bottom:20px; color:#e0e0e0; }
 
 .container { 
   background:white; 
@@ -79,7 +73,7 @@ textarea {
   box-sizing:border-box;
 }
 
-.footer { margin-top:40px; font-size:14px; }
+.footer { margin-top:20px; font-size:14px; }
 .footer a { color:white; text-decoration:none; margin:0 10px; cursor:pointer; }
 
 .section { 
@@ -96,13 +90,15 @@ textarea {
 
 .section h1, .section h2 { color:black; }
 
-/* إعلان Adsterra */
+/* إصلاح إعلان Adsterra */
 .ad-banner {
   width:100%;
   display:flex;
   justify-content:center;
   overflow:hidden;
-  margin:25px 0;
+  margin:20px 0;
+  flex-shrink:0;
+  min-height:90px; /* ضمان مساحة كافية */
 }
 
 .ad-banner iframe {
