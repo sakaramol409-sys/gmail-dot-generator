@@ -4,243 +4,295 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gmail Dot Generator - Free Online Tool</title>
+
 <style>
-body {   
-  font-family: Arial;   
-  text-align:center;   
-  background: linear-gradient(135deg,#667eea,#764ba2);   
-  color:white;   
-  padding:20px;   
-  margin:0;   
+
+body{
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+padding:20px;
+margin:0;
 }
 
-.logo { font-size:42px; font-weight:bold; margin-top:20px; }  
-.logo span { color:#00e0ff; }  
-.subtitle { font-size:14px; margin-bottom:20px; color:#e0e0e0; }  
+.logo{font-size:42px;font-weight:bold;margin-top:20px;}
+.logo span{color:#00e0ff;}
 
-.container {   
-  background:white;   
-  color:black;   
-  padding:25px;   
-  border-radius:15px;   
-  max-width:728px;   
-  width:100%;  
-  margin:auto;   
-  box-shadow:0 15px 40px rgba(0,0,0,0.25);   
-}  
-
-input {   
-  width:90%;   
-  padding:12px;   
-  margin:10px 0;   
-  border-radius:8px;   
-  border:1px solid #ccc;   
-  font-size:15px;   
-}  
-
-button {   
-  padding:12px 25px;   
-  background:#667eea;   
-  color:white;   
-  border:none;   
-  cursor:pointer;   
-  border-radius:8px;   
-  font-weight:bold;   
-  font-size:15px;   
-  transition:0.3s;   
-}  
-
-button:hover { background:#5563d6; }  
-
-textarea {   
-  width:100%;               /* ممتد بالكامل داخل container */
-  max-width:100%;           
-  height:auto;              /* ارتفاع ديناميكي */
-  min-height:200px;         
-  margin-top:15px;   
-  border-radius:8px;   
-  padding:10px;   
-  box-sizing:border-box;     /* يحافظ على الحواف */
-  overflow:auto;            /* شريط تمرير إذا لزم */
-  border:1px solid #000;    /* الخط الأسود حول النتائج */
-  resize:vertical;          /* يسمح بتغيير الطول فقط */
-}  
-
-.footer { margin-top:40px; font-size:14px; }  
-.footer a { color:white; text-decoration:none; margin:0 10px; cursor:pointer; }  
-
-.section {   
-  display:none;   
-  text-align:left;   
-  max-width:800px;   
-  margin:auto;   
-  background:white;   
-  color:black;   
-  padding:20px;   
-  border-radius:10px;   
-  margin-top:20px;   
-}  
-
-.section h1, .section h2 { color:black; }  
-
-.ad-banner {  
-  width:100%;  
-  display:flex;  
-  justify-content:center;  
-  overflow:hidden;  
-  margin:15px 0;  
-}  
-
-.ad-banner iframe {  
-  max-width:100%;  
-  border:none;  
-}  
-
-.temp-ad {
-  display:none;
-  justify-content:center;
-  margin-top:15px;
+.subtitle{
+font-size:14px;
+margin-bottom:20px;
+color:#e0e0e0;
 }
 
-.temp-ad iframe {
-  max-width:100%;
-  border:none;
+.container{
+background:white;
+color:black;
+padding:25px;
+border-radius:15px;
+max-width:728px;
+width:100%;
+margin:auto;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+position:relative;
 }
 
-.close-btn {
-  position:absolute;
-  top:0;
-  right:0;
-  background:#333;
-  color:white;
-  font-weight:bold;
-  padding:2px 6px;
-  cursor:pointer;
-  border-radius:50%;
-  z-index:10;
+input{
+width:90%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:15px;
 }
 
-@media (max-width:768px){
-  .container { max-width:100%; }
+button{
+padding:12px 25px;
+background:#667eea;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:8px;
+font-weight:bold;
+font-size:15px;
+transition:0.3s;
 }
+
+button:hover{
+background:#5563d6;
+}
+
+textarea{
+width:100%;
+max-width:100%;
+min-height:200px;
+margin-top:15px;
+border-radius:8px;
+padding:10px;
+box-sizing:border-box;
+overflow:auto;
+border:1px solid #000;
+resize:vertical;
+}
+
+.footer{
+margin-top:40px;
+font-size:14px;
+}
+
+.footer a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+cursor:pointer;
+}
+
+.section{
+display:none;
+text-align:left;
+max-width:800px;
+margin:auto;
+background:white;
+color:black;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.ad-banner{
+width:100%;
+display:flex;
+justify-content:center;
+overflow:hidden;
+margin:15px 0;
+}
+
+.ad-banner iframe{
+max-width:100%;
+border:none;
+}
+
+/* اعلان النوتيف فوق النتائج */
+
+.temp-ad{
+display:none;
+position:absolute;
+top:55%;
+left:50%;
+transform:translate(-50%,-50%);
+width:320px;
+max-width:90%;
+background:white;
+padding:8px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.35);
+z-index:1000;
+}
+
+.close-btn{
+position:absolute;
+top:-8px;
+right:-8px;
+background:#333;
+color:white;
+font-weight:bold;
+padding:3px 7px;
+cursor:pointer;
+border-radius:50%;
+}
+
+@media(max-width:768px){
+.container{max-width:100%;}
+}
+
 </style>
 </head>
 
 <body>
+
 <div class="logo">Gmail <span>●Dot</span> Generator</div>
 <div class="subtitle">Generate all possible Gmail dot variations instantly and easily</div>
 
-<!-- بانر أعلى الموقع -->
+<!-- اعلان اعلى الموقع -->
+
 <div class="ad-banner">
+
 <script>
-   atOptions = {
-     'key' : '21f6c0fd60fb19fc70bd3a5e527d337e',
-     'format' : 'iframe',
-     'height' : 90,
-     'width' : 728,
-     'params' : {}
-   };
+atOptions={
+'key':'21f6c0fd60fb19fc70bd3a5e527d337e',
+'format':'iframe',
+'height':90,
+'width':728,
+'params':{}
+};
 </script>
+
 <script src="https://www.highperformanceformat.com/21f6c0fd60fb19fc70bd3a5e527d337e/invoke.js"></script>
+
 </div>
 
 <div class="container" id="mainPage">
+
 <h2>Enter Your Gmail Address</h2>
-<input type="text" id="email" placeholder="example@gmail.com"><br>
+
+<input type="text" id="email" placeholder="example@gmail.com">
+
+<br>
+
 <button onclick="generate()">Generate</button>
+
 <h3 id="count"></h3>
+
 <textarea id="output" placeholder="Your generated variations will appear here..."></textarea>
 
-<!-- Native Banner / إعلان بعد الضغط على Generate -->
-<div id="tempAd" class="temp-ad" style="position:relative;">
-  <span class="close-btn" onclick="closeTempAd()">×</span>
-  <script async="async" data-cfasync="false" src="https://pl28884379.effectivegatecpm.com/e523158d22e7e93b836ae1a3c48887bf/invoke.js"></script>
-  <div id="container-e523158d22e7e93b836ae1a3c48887bf"></div>
-</div>
+<!-- اعلان يظهر فوق النتائج -->
+
+<div id="tempAd" class="temp-ad">
+
+<span class="close-btn" onclick="closeTempAd()">×</span>
+
+<script async data-cfasync="false"
+src="https://pl28884379.effectivegatecpm.com/e523158d22e7e93b836ae1a3c48887bf/invoke.js"></script>
+
+<div id="container-e523158d22e7e93b836ae1a3c48887bf"></div>
+
 </div>
 
-<!-- بانر الفوتر أعلى Footer -->
+</div>
+
+<!-- اعلان الفوتر -->
+
 <div class="ad-banner">
+
 <script>
-   atOptions = {
-     'key' : '31791cf0407feff687de93bf423d2751',
-     'format' : 'iframe',
-     'height' : 50,
-     'width' : 320,
-     'params' : {}
-   };
+atOptions={
+'key':'31791cf0407feff687de93bf423d2751',
+'format':'iframe',
+'height':50,
+'width':320,
+'params':{}
+};
 </script>
+
 <script src="https://www.highperformanceformat.com/31791cf0407feff687de93bf423d2751/invoke.js"></script>
-</div>
 
-<div class="section" id="privacySection">
-<h1>Privacy Policy</h1>
-<p>We do not collect or store personal information. All processing happens inside your browser.</p>
-<p>Third-party advertising networks may use cookies for relevant ads.</p>
-<p>Last updated: 2026</p>
-</div>
-
-<div class="section" id="termsSection">
-<h1>Terms of Use</h1>
-<p>This website provides an automated tool for generating formatting variations of a Gmail address.</p>
-<p>The tool is provided "as is" without any warranties. Users are responsible for how they use the generated results.</p>
-<p>This website does not access, modify, or interact with any email account. It only generates formatting combinations based on user input.</p>
-<p>No email addresses are stored, collected, or transmitted.</p>
-<p>Last updated: 2026</p>
-</div>
-
-<div class="footer">
-  <a onclick="showSection('privacySection')">Privacy Policy</a> |
-  <a onclick="showSection('termsSection')">Terms of Use</a> |
-  <a onclick="showSection('mainPage')">Home</a>
 </div>
 
 <script>
-function generate() {
-  const email = document.getElementById("email").value.trim();
-  if (!email.endsWith("@gmail.com")) { alert("Please enter a valid Gmail address"); return; }
 
-  let username = email.replace("@gmail.com","").replace(/\./g,"");
-  if(username.length>15){ alert("Username too long!"); return; }
-  let total = Math.pow(2, username.length-1);
-  let results = [];
+function generate(){
 
-  for (let i=0;i<total;i++){
-    let binary=i.toString(2).padStart(username.length-1,"0");
-    let newEmail="";
-    for (let j=0;j<username.length;j++){
-      newEmail+=username[j];
-      if(j<username.length-1 && binary[j]==="1") newEmail+=".";
-    }
-    results.push(newEmail+"@gmail.com");
-  }
+const email=document.getElementById("email").value.trim();
 
-  const output = document.getElementById("output");
-  document.getElementById("count").innerText="Total variations: "+results.length;
-  output.value = results.join("\n");
-
-  // تعديل ارتفاع الصندوق تلقائياً حسب المحتوى
-  output.style.height = "auto";
-  output.style.height = output.scrollHeight + "px";
-
-  // إظهار Native Banner مؤقت بعد Generate
-  const tempAd = document.getElementById("tempAd");
-  tempAd.style.display="flex";
-  const closeBtn = tempAd.querySelector(".close-btn");
-  closeBtn.style.display="none";
-
-  // إظهار زر الإغلاق بعد 3 ثواني
-  setTimeout(()=>{ closeBtn.style.display="block"; },3000);
+if(!email.endsWith("@gmail.com")){
+alert("Please enter a valid Gmail address");
+return;
 }
 
-function closeTempAd(){ document.getElementById("tempAd").style.display="none"; }
+let username=email.replace("@gmail.com","").replace(/\./g,"");
 
-function showSection(id){
-  const sections = ['mainPage','privacySection','termsSection'];
-  sections.forEach(sec=>{
-    document.getElementById(sec).style.display=(sec===id)?'block':'none';
-  });
+if(username.length>15){
+alert("Username too long!");
+return;
 }
+
+let total=Math.pow(2,username.length-1);
+
+let results=[];
+
+for(let i=0;i<total;i++){
+
+let binary=i.toString(2).padStart(username.length-1,"0");
+
+let newEmail="";
+
+for(let j=0;j<username.length;j++){
+
+newEmail+=username[j];
+
+if(j<username.length-1 && binary[j]==="1"){
+newEmail+=".";
+}
+
+}
+
+results.push(newEmail+"@gmail.com");
+
+}
+
+const output=document.getElementById("output");
+
+document.getElementById("count").innerText="Total variations: "+results.length;
+
+output.value=results.join("\n");
+
+output.style.height="auto";
+
+output.style.height=output.scrollHeight+"px";
+
+/* اظهار اعلان النوتيف */
+
+const tempAd=document.getElementById("tempAd");
+
+tempAd.style.display="block";
+
+const closeBtn=tempAd.querySelector(".close-btn");
+
+closeBtn.style.display="none";
+
+setTimeout(()=>{
+closeBtn.style.display="block";
+},3000);
+
+}
+
+function closeTempAd(){
+
+document.getElementById("tempAd").style.display="none";
+
+}
+
 </script>
+
 </body>
 </html>
